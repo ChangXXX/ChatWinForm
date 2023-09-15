@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
+using ChatWinForm.Chat;
 using ChatWinForm.Walkthrough;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,6 +39,7 @@ namespace ChatWinForm
                     );
                     services.AddSingleton<IFormFactory, FormFactory>();
                     services.AddSingleton<ILoginService, LoginService>();
+                    services.AddSingleton<IUserService, UserService>();
 
                     var forms = typeof(Program).Assembly
                     .GetTypes()

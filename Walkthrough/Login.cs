@@ -24,6 +24,7 @@ namespace ChatWinForm.Walkthrough
                 {
                     this.Close();
                     var chat = _formFactory.Create<ChatView>();
+                    chat.InitData(user);
                     chat.Show();
                 }
             }
