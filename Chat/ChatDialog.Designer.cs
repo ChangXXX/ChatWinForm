@@ -38,8 +38,6 @@
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = false;
-            this.flowLayoutPanel1.HorizontalScroll.Enabled = false;
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -98,7 +96,6 @@
             this.Controls.Add(this.btn_send);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ChatDialog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChatDialog";
             this.ResumeLayout(false);
             this.PerformLayout();

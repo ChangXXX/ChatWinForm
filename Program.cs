@@ -31,7 +31,7 @@ namespace ChatWinForm
                     services.AddHttpClient(
                         "Base", options =>
                         {
-                            options.BaseAddress = new Uri("https://localhost:7239/api/");
+                            options.BaseAddress = new Uri(ServerUrl.Server);
                             options.DefaultRequestHeaders.Accept.Add(
                                 new MediaTypeWithQualityHeaderValue("application/json")
                             );
@@ -51,5 +51,12 @@ namespace ChatWinForm
                     }
                 });
         }
+    }
+
+    public static class ServerUrl
+    {
+        private static string Base = "https://localhost:7239/";
+        public static string Server = Base+"api/";
+        public static string Hub = Base+"chatHub/";
     }
 }

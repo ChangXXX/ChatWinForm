@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace ChatWinForm.Chat
 {
@@ -31,7 +32,7 @@ namespace ChatWinForm.Chat
         {
             _user = user;
             _connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7239/chatHub/", options =>
+                .WithUrl(ServerUrl.Hub, options =>
                 {
                     options.AccessTokenProvider = () => Task.FromResult(_user.Jwt);
                 })
@@ -94,14 +95,21 @@ namespace ChatWinForm.Chat
                         // 더블 클릭 이벤트 추가
                         control.MouseDoubleClick += (o, e) =>
                         {
-                            var chatDialog = _formFactory.Create<ChatDialog>();
-                            chatDialog.InitData(_user, room, _connection);
+                            var chatDialog = new ChatDialog(_user, room);
+                            chatDialog.InitData();
                             chatDialog.ShowDialog();
                         };
                         flowLayoutPanel1.Controls.Add(control);
                         _rooms.Add(control);
                     }));
                 }
+            });
+
+            _connection.On<Room>(EnterManyUserRoom, (room) =>
+            {
+                var chatDialog = new ChatDialog(_user, room);
+                chatDialog.InitData();
+                chatDialog.ShowDialog();
             });
         }
 
@@ -120,6 +128,11 @@ namespace ChatWinForm.Chat
             var makeRoomDialog = _formFactory.Create<RoomMakeDialog>();
             makeRoomDialog.InitData(_user, users, _connection);
             makeRoomDialog.ShowDialog();
+        }
+
+        private async void btn_join_many_Click(object sender, EventArgs e)
+        {
+            await _connection.InvokeAsync(EnterManyUserRoom);
         }
     }
 }

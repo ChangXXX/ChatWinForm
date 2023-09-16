@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Runtime.Remoting.Channels;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChatWinForm.Chat
@@ -14,24 +15,39 @@ namespace ChatWinForm.Chat
         private static string ConnectChatRoom = "ConnectChatRoom";
         private static string DisconnectConnectChatRoom = "DisconnectConnectChatRoom";
         private static string SendGroupMessage = "SendGroupMessage";
-        public ChatDialog()
+        public ChatDialog(User user, Room room)
         {
             InitializeComponent();
+
+            _user = user;
+            _room = room;
+            lb_Users.Text = string.Join(", ", room.Users);
+            _connection = new HubConnectionBuilder()
+                .WithUrl(ServerUrl.Hub, options =>
+                {
+                    options.AccessTokenProvider = () => Task.FromResult(_user.Jwt);
+                })
+                .WithAutomaticReconnect()
+                .Build();
+
+            _connection.Closed += async (error) =>
+            {
+                await Task.Delay(new Random().Next(0, 5) * 1000);
+                await _connection.StartAsync();
+            };
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             _connection.SendAsync(DisconnectConnectChatRoom, _room).GetAwaiter().GetResult();
+            _connection.DisposeAsync().GetAwaiter().GetResult();
             base.OnFormClosing(e);
         }
 
-        public async void InitData(User user, Room room, HubConnection connection)
+        public async void InitData()
         {
-            _user = user;
-            _room = room;
-            lb_Users.Text = string.Join(", ", room.Users);
-            _connection = connection;
-            await _connection.SendAsync(ConnectChatRoom, room);
+            await _connection.StartAsync();
+            await _connection.SendAsync(ConnectChatRoom, _room);
 
             _connection.On<Message>(SendGroupMessage, (msg) =>
             {
@@ -42,23 +58,14 @@ namespace ChatWinForm.Chat
                 };
                 if (msg.Sender.Equals(_user.Name))
                 {
-                    // add sendcontrol
-                    flowLayoutPanel1.Invoke(new MethodInvoker(delegate
-                    {
-                        control.IsSend = true;
-                        flowLayoutPanel1.Controls.Add(control);
-                        
-                    }));
+                    control.IsSend = true;
+                    addMsgControl(control);
                 }
                 else
                 {
+                    control.IsSend = false;
                     // add receivecontrol
-                    flowLayoutPanel1.Invoke(new MethodInvoker(delegate
-                    {
-                        control.IsSend = false;
-                        flowLayoutPanel1.Controls.Add(control);
-
-                    }));
+                    addMsgControl(control);
                 }
             });
         }
@@ -78,6 +85,14 @@ namespace ChatWinForm.Chat
 
         private void msgControl1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void addMsgControl(MsgControl control)
+        {
+            flowLayoutPanel1.Invoke(new MethodInvoker(delegate
+            {
+                flowLayoutPanel1.Controls.Add(control);
+            }));
         }
     }
 }

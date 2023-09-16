@@ -1,4 +1,5 @@
-﻿using ChatWinForm.Walkthrough;
+﻿using ChatWinForm.Chat;
+using ChatWinForm.Walkthrough;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

@@ -31,6 +31,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.btn_create_room = new System.Windows.Forms.Button();
+            this.btn_join_many = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -49,9 +50,9 @@
             this.btn_refresh.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btn_refresh.FlatAppearance.BorderSize = 0;
             this.btn_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_refresh.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_refresh.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_refresh.ForeColor = System.Drawing.Color.White;
-            this.btn_refresh.Location = new System.Drawing.Point(172, 20);
+            this.btn_refresh.Location = new System.Drawing.Point(190, 20);
             this.btn_refresh.Margin = new System.Windows.Forms.Padding(0);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(85, 30);
@@ -65,9 +66,9 @@
             this.btn_create_room.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btn_create_room.FlatAppearance.BorderSize = 0;
             this.btn_create_room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_create_room.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_create_room.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_create_room.ForeColor = System.Drawing.Color.White;
-            this.btn_create_room.Location = new System.Drawing.Point(29, 20);
+            this.btn_create_room.Location = new System.Drawing.Point(9, 20);
             this.btn_create_room.Margin = new System.Windows.Forms.Padding(0);
             this.btn_create_room.Name = "btn_create_room";
             this.btn_create_room.Size = new System.Drawing.Size(85, 30);
@@ -76,11 +77,28 @@
             this.btn_create_room.UseVisualStyleBackColor = false;
             this.btn_create_room.Click += new System.EventHandler(this.btn_create_room_Click);
             // 
+            // btn_join_many
+            // 
+            this.btn_join_many.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn_join_many.FlatAppearance.BorderSize = 0;
+            this.btn_join_many.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_join_many.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_join_many.ForeColor = System.Drawing.Color.White;
+            this.btn_join_many.Location = new System.Drawing.Point(99, 20);
+            this.btn_join_many.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_join_many.Name = "btn_join_many";
+            this.btn_join_many.Size = new System.Drawing.Size(85, 30);
+            this.btn_join_many.TabIndex = 3;
+            this.btn_join_many.Text = "빠른입장";
+            this.btn_join_many.UseVisualStyleBackColor = false;
+            this.btn_join_many.Click += new System.EventHandler(this.btn_join_many_Click);
+            // 
             // ChatView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 561);
+            this.Controls.Add(this.btn_join_many);
             this.Controls.Add(this.btn_create_room);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -96,5 +114,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_create_room;
+        private System.Windows.Forms.Button btn_join_many;
     }
 }
