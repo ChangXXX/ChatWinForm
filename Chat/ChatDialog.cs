@@ -35,6 +35,8 @@ namespace ChatWinForm.Chat
                 await Task.Delay(new Random().Next(0, 5) * 1000);
                 await _connection.StartAsync();
             };
+
+            setHubMsg();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -48,7 +50,10 @@ namespace ChatWinForm.Chat
         {
             await _connection.StartAsync();
             await _connection.SendAsync(ConnectChatRoom, _room);
+        }
 
+        private void setHubMsg()
+        {
             _connection.On<Message>(SendGroupMessage, (msg) =>
             {
                 var control = new MsgControl
