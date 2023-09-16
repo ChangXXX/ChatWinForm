@@ -9,6 +9,7 @@ namespace ChatWinForm.Chat
 {
     public partial class ChatView : Form
     {
+        private readonly IFormFactory _formFactory;
         private readonly IUserService _userService;
         private HubConnection _connection;
         private User _user;
@@ -16,13 +17,13 @@ namespace ChatWinForm.Chat
 
         private static string ReceiveAllMessage = "ReceiveAllMessage";
         private static string ReceiveSystemMessage = "SystemMessage";
-        private static string CreateRoom = "CreateRoom";
         private static string EnterManyUserRoom = "EnterManyUserRoom";
         private static string PrintRooms = "PrintRooms";
         private static string EnterRoom = "EnterRoom";
-        public ChatView(IUserService userService)
+        public ChatView(IFormFactory formFactory, IUserService userService)
         {
             InitializeComponent();
+            _formFactory = formFactory;
             _userService = userService;
         }
 
@@ -103,6 +104,14 @@ namespace ChatWinForm.Chat
         private async void btn_refresh_Click(object sender, EventArgs e)
         {
             await _connection.InvokeAsync(PrintRooms);
+        }
+
+        private async void btn_create_room_Click(object sender, EventArgs e)
+        {
+            var users = await _userService.GetUsers();
+            var makeRoomDialog = _formFactory.Create<RoomMakeDialog>();
+            makeRoomDialog.InitData(_user, users, _connection);
+            makeRoomDialog.ShowDialog();
         }
     }
 }

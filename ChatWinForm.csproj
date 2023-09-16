@@ -250,6 +250,18 @@
     <Compile Include="Chat\RoomControl.Designer.cs">
       <DependentUpon>RoomControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Chat\RoomMakeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat\RoomMakeDialog.Designer.cs">
+      <DependentUpon>RoomMakeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\UserListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\UserListControl.Designer.cs">
+      <DependentUpon>UserListControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\UserService.cs" />
     <Compile Include="FormFactory.cs" />
     <Compile Include="Walkthrough\Login.cs">
@@ -273,6 +285,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\RoomControl.resx">
       <DependentUpon>RoomControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\RoomMakeDialog.resx">
+      <DependentUpon>RoomMakeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\UserListControl.resx">
+      <DependentUpon>UserListControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

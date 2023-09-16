@@ -74,6 +74,7 @@
             this.btn_create_room.TabIndex = 2;
             this.btn_create_room.Text = "방 만들기";
             this.btn_create_room.UseVisualStyleBackColor = false;
+            this.btn_create_room.Click += new System.EventHandler(this.btn_create_room_Click);
             // 
             // ChatView
             // 
