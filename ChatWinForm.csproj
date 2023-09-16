@@ -237,11 +237,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\ChatDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat\ChatDialog.Designer.cs">
+      <DependentUpon>ChatDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\ChatView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Chat\ChatView.Designer.cs">
       <DependentUpon>ChatView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\Message.cs" />
+    <Compile Include="Chat\ReceiveMsgControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\ReceiveMsgControl.Designer.cs">
+      <DependentUpon>ReceiveMsgControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Chat\Room.cs" />
     <Compile Include="Chat\RoomControl.cs">
@@ -255,6 +268,12 @@
     </Compile>
     <Compile Include="Chat\RoomMakeDialog.Designer.cs">
       <DependentUpon>RoomMakeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\SendMsgControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\SendMsgControl.Designer.cs">
+      <DependentUpon>SendMsgControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Chat\UserListControl.cs">
       <SubType>UserControl</SubType>
@@ -280,6 +299,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Chat\ChatDialog.resx">
+      <DependentUpon>ChatDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chat\ChatView.resx">
       <DependentUpon>ChatView.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\RoomMakeDialog.resx">
       <DependentUpon>RoomMakeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\SendMsgControl.resx">
+      <DependentUpon>SendMsgControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\UserListControl.resx">
       <DependentUpon>UserListControl.cs</DependentUpon>

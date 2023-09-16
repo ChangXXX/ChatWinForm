@@ -37,7 +37,6 @@ namespace ChatWinForm.Chat
 
         private void userListControl1_Load(object sender, System.EventArgs e)
         {
-
         }
 
         private async void btn_create_Click(object sender, System.EventArgs e)

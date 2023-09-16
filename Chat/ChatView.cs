@@ -63,9 +63,9 @@ namespace ChatWinForm.Chat
                 //Console.WriteLine($"시스템 메세지: {msg}");
             });
 
-            _connection.On<List<Room>>(PrintRooms, (room) =>
+            _connection.On<List<Room>>(PrintRooms, (rooms) =>
             {
-                if (_rooms.Count > 0 && room.Count > 0 && flowLayoutPanel1.Controls.Count > 0)
+                if (_rooms.Count > 0 && rooms.Count > 0 && flowLayoutPanel1.Controls.Count > 0)
                 {
                     foreach (RoomControl control in _rooms)
                     {
@@ -81,14 +81,22 @@ namespace ChatWinForm.Chat
                     }
                 }
 
-                for (int i = 0; i < room.Count; i++)
+                for (int i = 0; i < rooms.Count; i++)
                 {
+                    var room = rooms[i];
                     flowLayoutPanel1.Invoke(new MethodInvoker(delegate
                     {
                         RoomControl control = new RoomControl
                         {
-                            Id = room[i].Id.ToString(),
-                            UserNames = string.Join(", ", room[i].Users)
+                            Id = room.Id.ToString(),
+                            UserNames = string.Join(", ", room.Users)
+                        };
+                        // 더블 클릭 이벤트 추가
+                        control.MouseDoubleClick += (o, e) =>
+                        {
+                            var chatDialog = _formFactory.Create<ChatDialog>();
+                            chatDialog.InitData(_user, room, _connection);
+                            chatDialog.ShowDialog();
                         };
                         flowLayoutPanel1.Controls.Add(control);
                         _rooms.Add(control);
