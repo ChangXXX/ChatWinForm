@@ -250,12 +250,6 @@
       <DependentUpon>ChatView.cs</DependentUpon>
     </Compile>
     <Compile Include="Chat\Message.cs" />
-    <Compile Include="Chat\ReceiveMsgControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Chat\ReceiveMsgControl.Designer.cs">
-      <DependentUpon>ReceiveMsgControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Chat\Room.cs" />
     <Compile Include="Chat\RoomControl.cs">
       <SubType>UserControl</SubType>
@@ -269,11 +263,11 @@
     <Compile Include="Chat\RoomMakeDialog.Designer.cs">
       <DependentUpon>RoomMakeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Chat\SendMsgControl.cs">
+    <Compile Include="Chat\MsgControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Chat\SendMsgControl.Designer.cs">
-      <DependentUpon>SendMsgControl.cs</DependentUpon>
+    <Compile Include="Chat\MsgControl.Designer.cs">
+      <DependentUpon>MsgControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Chat\UserListControl.cs">
       <SubType>UserControl</SubType>
@@ -311,8 +305,8 @@
     <EmbeddedResource Include="Chat\RoomMakeDialog.resx">
       <DependentUpon>RoomMakeDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Chat\SendMsgControl.resx">
-      <DependentUpon>SendMsgControl.cs</DependentUpon>
+    <EmbeddedResource Include="Chat\MsgControl.resx">
+      <DependentUpon>MsgControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\UserListControl.resx">
       <DependentUpon>UserListControl.cs</DependentUpon>

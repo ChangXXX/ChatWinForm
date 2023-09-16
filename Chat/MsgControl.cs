@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ChatWinForm.Chat
 {
-    public partial class SendMsgControl : UserControl
+    public partial class MsgControl : UserControl
     {
-        public SendMsgControl()
+        public MsgControl()
         {
             InitializeComponent();
         }
@@ -43,6 +43,27 @@ namespace ChatWinForm.Chat
             {
                 _message = value;
                 lb_msg.Text = _message;
+            }
+        }
+
+        private bool _isSend;
+        public bool IsSend
+        {
+            get
+            {
+                return _isSend;
+            }
+            set
+            {
+                _isSend = value;
+                if (value)
+                {
+                    this.BackColor = System.Drawing.Color.LightCyan;
+                }
+                else
+                {
+                    this.BackColor = System.Drawing.Color.Cyan;
+                }
             }
         }
     }

@@ -35,20 +35,30 @@ namespace ChatWinForm.Chat
 
             _connection.On<Message>(SendGroupMessage, (msg) =>
             {
+                var control = new MsgControl
+                {
+                    Name = msg.Sender,
+                    Message = msg.Msg
+                };
                 if (msg.Sender.Equals(_user.Name))
                 {
                     // add sendcontrol
-                    flowLayoutPanel1.Controls.Add(
-                        new SendMsgControl
-                        {
-                            Name = msg.Sender,
-                            Message = msg.Msg
-                        }
-                    );
+                    flowLayoutPanel1.Invoke(new MethodInvoker(delegate
+                    {
+                        control.IsSend = true;
+                        flowLayoutPanel1.Controls.Add(control);
+                        
+                    }));
                 }
                 else
                 {
                     // add receivecontrol
+                    flowLayoutPanel1.Invoke(new MethodInvoker(delegate
+                    {
+                        control.IsSend = false;
+                        flowLayoutPanel1.Controls.Add(control);
+
+                    }));
                 }
             });
         }
@@ -66,7 +76,7 @@ namespace ChatWinForm.Chat
             }
         }
 
-        private void sendMsgControl1_Load(object sender, EventArgs e)
+        private void msgControl1_Load(object sender, EventArgs e)
         {
         }
     }
