@@ -85,6 +85,7 @@ namespace ChatWinForm.Chat
                     Msg = tb_input.Text
                 };
                 await _connection.SendAsync(SendGroupMessage, _room.Id.ToString() , msg);
+                tb_input.Text = string.Empty;
             }
         }
 
