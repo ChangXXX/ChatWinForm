@@ -7,8 +7,8 @@ namespace ChatWinForm.Walkthrough
     public partial class Login : Form
     {
         private readonly IFormFactory _formFactory;
-        private readonly ILoginService _loginService;
-        public Login(IFormFactory formFactory, ILoginService loginService)
+        private readonly ISignService _loginService;
+        public Login(IFormFactory formFactory, ISignService loginService)
         {
             InitializeComponent();
             _loginService = loginService;

@@ -283,7 +283,13 @@
     <Compile Include="Walkthrough\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Walkthrough\LoginService.cs" />
+    <Compile Include="Walkthrough\SignService.cs" />
+    <Compile Include="Walkthrough\SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Walkthrough\SignUp.Designer.cs">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Walkthrough\User.cs" />
     <Compile Include="Walkthrough\WalkThrough.cs">
       <SubType>Form</SubType>
@@ -322,6 +328,9 @@
     </Compile>
     <EmbeddedResource Include="Walkthrough\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Walkthrough\SignUp.resx">
+      <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Walkthrough\WalkThrough.resx">
       <DependentUpon>WalkThrough.cs</DependentUpon>

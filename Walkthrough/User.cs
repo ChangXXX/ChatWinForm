@@ -8,14 +8,14 @@ namespace ChatWinForm.Walkthrough
 {
     public class User
     {
-        public User(string Name, string Password)
+        public User(string Name, string Pwd)
         {
             this.Name = Name;
-            this.Password = Password;
+            this.Pwd = Pwd;
         }
 
         public string Name { get; set; }
-        public string Password { get; set; }
+        public string Pwd { get; set; }
 
         public string Jwt { get; set; }
     }

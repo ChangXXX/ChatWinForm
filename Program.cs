@@ -38,7 +38,7 @@ namespace ChatWinForm
                         }
                     );
                     services.AddSingleton<IFormFactory, FormFactory>();
-                    services.AddSingleton<ILoginService, LoginService>();
+                    services.AddSingleton<ISignService, SignService>();
                     services.AddSingleton<IUserService, UserService>();
 
                     var forms = typeof(Program).Assembly

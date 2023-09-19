@@ -5,15 +5,16 @@ using System.Net.Http;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace ChatWinForm.Walkthrough
 {
-    public class LoginService : ILoginService
+    public class SignService : ISignService
     {
         private static string _location = "Users/";
         private readonly HttpClient _httpClient;
 
-        public LoginService(IHttpClientFactory factory)
+        public SignService(IHttpClientFactory factory)
         {
             _httpClient = factory.CreateClient("Base");
         }
@@ -36,10 +37,23 @@ namespace ChatWinForm.Walkthrough
                 }
             }
         }
+
+        public async Task<bool> Signup(string name, string pwd)
+        {
+            var response = await _httpClient.PostAsJsonAsync(_location, new User(name, pwd));
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            
+            return false;
+        }
     }
 
-    public interface ILoginService
+    public interface ISignService
     {
         Task<User> Login(string name, string password);
+
+        Task<bool> Signup(string name, string pwd);
     }
 }

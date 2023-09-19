@@ -18,5 +18,11 @@ namespace ChatWinForm
             var login = _formFactory.Create<Login>();
             login.Show();
         }
+
+        private void signup_Click(object sender, System.EventArgs e)
+        {
+            var signup = _formFactory.Create<SignUp>();
+            signup.ShowDialog();
+        }
     }
 }
